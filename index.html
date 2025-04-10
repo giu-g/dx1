@@ -1,30 +1,121 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Length Comparison</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
 
-    <title>dx1 - Desafio</title>
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+        .problem {
+            background-color: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 16px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+
+        input[type="text"] {
+            border: none;
+            border-bottom: 2px solid #555;
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #663399;
+        }
+
+        button {
+            background-color: #663399;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 15px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #552b7c;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        img {
+            margin-top: 40px;
+            max-width: 90%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-
 <body>
 
-    <p class="title"><a class="red">Insira</a><a class="orange"> duas</a><a class="yellow"> palavras</a><a class="green"> para</a><a class="lightblue"> comparar</a><a class="blue"> seus</a><a class="purple"> tamanhos:</a></p>
+    <div class="title">Compare the Length of Two Words</div>
 
-    <input type="text" class="inputA" id="palavra1" placeholder="Digite a primeira palavra">
-    <input type="text" class="inputB" id="palavra2" placeholder="Digite a segunda palavra">
+    <div class="problem">
+        <strong>Situation:</strong> Imagine you're creating a program to help children understand word length. Your tool should take two words and compare their lengths, giving feedback on which one is longer or if they are the same.
+    </div>
 
-    <button class="button" onclick="compararTamanhos()">Comparar</button>
-    
-    <p id="resultado"></p>
+    <input type="text" id="word1" placeholder="Enter the first word">
+    <input type="text" id="word2" placeholder="Enter the second word">
 
-    <img src="https://img.atlasobscura.com/jIUMgAFpSmK-Ul56NuDxWa61aa9J7nvIRQfWidhJ0cw/rs:fill:12000:12000/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2Fzc2V0/cy8wYjM3ZmQ3Yzc1/NTU1MWM0MTBfMTYy/NjIxODM3MzRfNGYw/OThlMTdjYl9rLmpw/Zw.jpg" width="500px">
+    <br>
+
+    <button onclick="compareWords()">Compare</button>
+    <button onclick="location.reload()">Go Back</button>
+
+    <p id="result"></p>
+
+    <img src="https://img.atlasobscura.com/jIUMgAFpSmK-Ul56NuDxWa61aa9J7nvIRQfWidhJ0cw/rs:fill:12000:12000/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2Fzc2V0/cy8wYjM3ZmQ3Yzc1/NTU1MWM0MTBfMTYy/NjIxODM3MzRfNGYw/OThlMTdjYl9rLmpw/Zw.jpg" alt="Interesting Image">
+
+    <script>
+        function compareWords() {
+            const word1 = document.getElementById("word1").value.trim();
+            const word2 = document.getElementById("word2").value.trim();
+            const result = document.getElementById("result");
+
+            if (word1 === "" || word2 === "") {
+                result.innerHTML = "Please enter both words.";
+                return;
+            }
+
+            if (word1.length > word2.length) {
+                result.innerHTML = `The first word is longer with ${word1.length} characters.`;
+            } else if (word2.length > word1.length) {
+                result.innerHTML = `The second word is longer with ${word2.length} characters.`;
+            } else {
+                result.innerHTML = `Both words have the same length of ${word1.length} characters.`;
+            }
+        }
+    </script>
 
 </body>
-
 </html>
